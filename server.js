@@ -15,6 +15,8 @@ app.get("/",function(req,res){
     res.render('home');
 })
 
+
+//port on which website will be hosted
 app.listen(PORT,function(){
     console.log(`listening on port ${PORT}`)
 })
