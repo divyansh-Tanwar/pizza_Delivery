@@ -1,3 +1,19 @@
 body {
-  background: red;
+  font-family: "Lato", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #232323;
+}
+
+.cart_image {
+  background: #FE5F1E;
+}
+.cart_image:hover {
+  background: #b23301;
+}
+
+nav li a {
+  transition: all 0.3s ease-in-out;
+}
+nav li a:hover {
+  color: #FE5F1E;
 }
