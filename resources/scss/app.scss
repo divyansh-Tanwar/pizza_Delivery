@@ -39,3 +39,12 @@ section.hero{
         color: $pure;
     }
 }
+
+.order_now_button{
+
+    background: $primary;
+    transition: $smooth;
+    &:hover{
+        background: $primary-hover;
+    }
+}

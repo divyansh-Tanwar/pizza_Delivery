@@ -36,3 +36,11 @@ section.hero {
   border-color: #fff;
   color: #fff;
 }
+
+.order_now_button {
+  background: #FE5F1E;
+  transition: all 0.3s ease-in-out;
+}
+.order_now_button:hover {
+  background: #b23301;
+}

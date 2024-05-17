@@ -4,7 +4,11 @@
   "description": "app to deliever pizza",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "author": "Divyansh Tanwar",
   "license": "ISC",
@@ -14,6 +18,7 @@
     "express-ejs-layouts": "^2.5.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "laravel-mix": "^6.0.49",
     "nodemon": "^3.1.0",
     "resolve-url-loader": "^5.0.0",
