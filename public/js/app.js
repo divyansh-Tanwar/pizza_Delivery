@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/public/js/script": 0,
+/******/ 			"/public/js/app": 0,
 /******/ 			"public/css/app": 0
 /******/ 		};
 /******/ 		

@@ -52,3 +52,20 @@ section.cart {
 .total-amount {
   color: #FE5F1E;
 }
+
+section.Register {
+  background: #F8F8F8;
+  min-height: 100vh;
+}
+
+.already_have_account {
+  color: #FE5F1E;
+}
+.already_have_account:hover {
+  color: #b23301;
+}
+
+section.login {
+  background: #F8F8F8;
+  min-height: 100vh;
+}

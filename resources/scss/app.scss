@@ -57,3 +57,21 @@ section.hero{
 .total-amount{
     color: $primary;
 }
+
+section.Register{
+    background:$secondary;
+    min-height: 100vh;
+}
+
+.already_have_account
+{
+    color: $primary;
+    &:hover{
+        color: $primary-hover;
+    }
+}
+
+section.login{
+    background:$secondary;
+    min-height: 100vh;
+}

@@ -20,6 +20,14 @@ app.get("/cart",function(req,res){
     res.render("customers/cart");
 })
 
+app.get("/login",function(req,res){
+    res.render("Auth/Login");
+})
+
+app.get("/register",function(req,res){
+    res.render("Auth/register");
+})
+
 
 //port on which website will be hosted
 app.listen(PORT,function(){
