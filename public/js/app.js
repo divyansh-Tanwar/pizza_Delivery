@@ -7,7 +7,9 @@
   \*****************************/
 /***/ (() => {
 
-console.log("hello world");
+function handleMenu() {
+  console.log("click done");
+}
 
 /***/ }),
 
@@ -110,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/public/js/app": 0,
+/******/ 			"/public/js/script": 0,
 /******/ 			"public/css/app": 0
 /******/ 		};
 /******/ 		

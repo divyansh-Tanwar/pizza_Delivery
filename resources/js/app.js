@@ -1,1 +1,4 @@
-console.log("hello world");
+function handleMenu()
+{
+    console.log("click done");
+}
