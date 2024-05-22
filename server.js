@@ -10,23 +10,9 @@ app.set('views',path.join(__dirname,'/resources/views'));
 app.set('view engine','ejs');
 app.use(expressLayout);
 
+ //calling function
+ require("./routes/web")(app)
 
-//handeling requests
-app.get("/",function(req,res){
-    res.render('home');
-})
-
-app.get("/cart",function(req,res){
-    res.render("customers/cart");
-})
-
-app.get("/login",function(req,res){
-    res.render("Auth/Login");
-})
-
-app.get("/register",function(req,res){
-    res.render("Auth/register");
-})
 
 
 //port on which website will be hosted
