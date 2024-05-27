@@ -3,6 +3,15 @@ const app= express();
 const path=require('path');
 const expressLayout=require("express-ejs-layouts");
 const PORT=process.env.PORT||3000;
+const mongoose=require('mongoose');
+//setting up database connection:
+mongoose.connect("mongodb://127.0.0.1:27017/pizza", { useNewUrlParser: true })
+.then(() => {
+    console.log("database connected");
+}).catch(err => {
+    console.log("database not connected");
+    console.error(err);
+});
 //telling express about static folder fro mwhere it has to pick css/js files
 app.use(express.static('public'));
 const ejs=require('ejs')
