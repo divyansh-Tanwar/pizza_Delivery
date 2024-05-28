@@ -5,17 +5,17 @@ body {
 }
 
 .cart_image {
-  background: #FE5F1E;
+  background: #ec0606;
 }
 .cart_image:hover {
-  background: #b23301;
+  background: #513c3c;
 }
 
 nav li a {
   transition: all 0.3s ease-in-out;
 }
 nav li a:hover {
-  color: #FE5F1E;
+  color: #ec0606;
 }
 
 section.hero {
@@ -27,22 +27,22 @@ section.hero {
 }
 
 .add-to-cart {
-  border: 2px solid #FE5F1E;
-  color: #FE5F1E;
+  border: 2px solid #ec0606;
+  color: #ec0606;
   transition: all 0.3s ease-in-out;
 }
 .add-to-cart:hover {
-  background: #FE5F1E;
+  background: #ec0606;
   border-color: #fff;
   color: #fff;
 }
 
 .order_now_button {
-  background: #FE5F1E;
+  background: #ec0606;
   transition: all 0.3s ease-in-out;
 }
 .order_now_button:hover {
-  background: #b23301;
+  background: #513c3c;
 }
 
 section.cart {
@@ -50,7 +50,7 @@ section.cart {
 }
 
 .total-amount {
-  color: #FE5F1E;
+  color: #ec0606;
 }
 
 section.Register {
@@ -59,10 +59,10 @@ section.Register {
 }
 
 .already_have_account {
-  color: #FE5F1E;
+  color: #ec0606;
 }
 .already_have_account:hover {
-  color: #b23301;
+  color: #513c3c;
 }
 
 section.login {

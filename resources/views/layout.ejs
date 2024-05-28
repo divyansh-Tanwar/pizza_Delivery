@@ -22,60 +22,70 @@
       </div>
 
       <div class="my-4">
-        <ul class=" hidden md:flex items-centre">
+        <ul class="hidden md:flex items-centre">
           <li class="mx-6"><a href="/">Menu</a></li>
           <li class="mx-6"><a href="">Offers</a></li>
           <li class="mx-6"><a href="/register">Register</a></li>
           <li class="mx-6"><a href="/login">LogIn</a></li>
           <li class="mx-6">
-            <a href="/cart" class="cart_image inline-block px-4 py-1 rounded-full"
+            <a
+              href="/cart"
+              class="cart_image inline-block px-4 py-1 rounded-full"
               ><img src="/img/cart.png"
             /></a>
           </li>
         </ul>
         <button onclick=" handleMenu()" class="md:hidden">☰</button>
       </div>
-    
-     <!----------------------------------------------- navbar for mobile screen------------------------------------------ -->
-      <div id="nav-dilogue" class=" hidden fixed z-10  md:hidden bg-white inset-0  mx-auto">
+
+      <!----------------------------------------------- navbar for mobile screen------------------------------------------ -->
+      <div
+        id="nav-dilogue"
+        class="hidden fixed z-10 md:hidden bg-white inset-0 mx-auto"
+      >
         <div class="flex justify-between">
           <div class="p-2">
             <img class="pl-6" src="/img/logo.png" alt="logo" />
           </div>
-          <button onclick=" handleMenu()" class="pr-7 mb-4 md:hidden">⛌</button>
+          <button onclick= "handleMenu" class="pr-7 mb-4 md:hidden">⛌</button>
         </div>
         <div>
-          <ul class=" mt-6">
+          <ul class="mt-6">
             <li class="mx-6 text-xl font-bold pt-5"><a href="/">Menu</a></li>
             <li class="mx-6 text-xl font-bold pt-5"><a href="">Offers</a></li>
-            <li class="mx-6 text-xl font-bold pt-5"><a href="/register">Register</a></li>
-            <li class="mx-6 text-xl font-bold pt-5"><a href="/login">LogIn</a></li>
             <li class="mx-6 text-xl font-bold pt-5">
-              <hr class=" my-3  bg-black border-2 border-solid">
-              <a id="cart-icon" onclick="handleCart()"  href="/cart" class="cart_image inline-block px-4 py-1 rounded-full"
+              <a href="/register">Register</a>
+            </li>
+            <li class="mx-6 text-xl font-bold pt-5">
+              <a href="/login">LogIn</a>
+            </li>
+            <li class="mx-6 text-xl font-bold pt-5">
+              <hr class="my-3 bg-black border-2 border-solid" />
+              <a
+                id="cart-icon"
+                onclick="handleCart"
+                href="/cart"
+                class="cart_image inline-block px-4 py-1 rounded-full"
                 ><img src="/img/cart.png"
               /></a>
             </li>
           </ul>
         </div>
       </div>
-
     </nav>
     <%- body %>
 
     <script>
-      const navDilogue=document.getElementById('nav-dilogue');
+      const navDilogue = document.getElementById("nav-dilogue");
       function handleMenu() {
-        navDilogue.classList.toggle('hidden');
-      }
-      
-      const cartIcon=document.getElementById(cart-icon);
-      function handleCart()
-      {
-        navDilogue.classList.toggle('hidden');
+        navDilogue.classList.toggle("hidden");
       }
 
-      </script>
-    <!-- <script src="/js/script.js"></script> -->
+      const cartIcon = document.getElementById("cart - icon");
+      function handleCart() {
+        navDilogue.classList.toggle("hidden");
+      }
+    </script>
+    <script src="/js/app.js"></script>
   </body>
 </html>

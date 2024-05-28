@@ -7,9 +7,14 @@
   \*****************************/
 /***/ (() => {
 
-function handleMenu() {
-  console.log("click done");
-}
+var addToCard = document.querySelectorAll(".add-to-cart");
+addToCard.forEach(function (btn) {
+  btn.addEventListener("click", function (event) {
+    console.log(event);
+    var pizza = btn.dataset.pizza;
+    console.log(pizza);
+  });
+});
 
 /***/ }),
 
