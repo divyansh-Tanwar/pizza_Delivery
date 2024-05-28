@@ -4,6 +4,12 @@ function cartController()
         cart(req,res)
         {
             res.render("customers/cart");
+        },
+
+        update(req,res)
+        {  
+            console.log("yaha hu");
+           return res.json({data:'All ok'});
         }
     }
 }
