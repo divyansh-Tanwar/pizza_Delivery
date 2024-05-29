@@ -1,17 +1,20 @@
 
 const axios=require('axios');
 let addToCard = document.querySelectorAll(".add-to-cart");
- 
+let cartCounter=document.getElementById('cartCounter');
 function updateCart(pizza)
 {
    axios.post('/update_cart',pizza).then(function(res){
-    console.log(res)});
+    console.log(res)
+    cartCounter.innerText=res.data.totalQty;
+  });
+    
    
 }
 
 addToCard.forEach(function(btn){
   btn.addEventListener("click", function (event) {
-    console.log(event);
+    // console.log(event);
      
     //JSON.parse is used to convert string to object
     let pizza=JSON.parse(btn.dataset.pizza); //fetch data of the pizza on click

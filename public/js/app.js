@@ -9,14 +9,16 @@
 
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/dist/browser/axios.cjs");
 var addToCard = document.querySelectorAll(".add-to-cart");
+var cartCounter = document.getElementById('cartCounter');
 function updateCart(pizza) {
   axios.post('/update_cart', pizza).then(function (res) {
     console.log(res);
+    cartCounter.innerText = res.data.totalQty;
   });
 }
 addToCard.forEach(function (btn) {
   btn.addEventListener("click", function (event) {
-    console.log(event);
+    // console.log(event);
 
     //JSON.parse is used to convert string to object
     var pizza = JSON.parse(btn.dataset.pizza); //fetch data of the pizza on click

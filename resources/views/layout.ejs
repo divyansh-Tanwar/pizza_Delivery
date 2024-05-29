@@ -27,11 +27,12 @@
           <li class="mx-6"><a href="">Offers</a></li>
           <li class="mx-6"><a href="/register">Register</a></li>
           <li class="mx-6"><a href="/login">LogIn</a></li>
-          <li class="mx-6">
+          <li class="mx-6 ">
             <a
               href="/cart"
-              class="cart_image inline-block px-4 py-1 rounded-full"
-              ><img src="/img/cart.png"
+              class="cart_image inline-block px-4 py-1 rounded-full flex items-center">
+              <span id="cartCounter" class="text-white font-bold pr-2 text-sm">0</span>
+              <img src="/img/cart.png"
             /></a>
           </li>
         </ul>
@@ -65,8 +66,8 @@
                 id="cart-icon"
                 onclick="handleCart"
                 href="/cart"
-                class="cart_image inline-block px-4 py-1 rounded-full"
-                ><img src="/img/cart.png"
+                class="cart_image inline-block px-4 py-1 rounded-full">
+                <img src="/img/cart.png"
               /></a>
             </li>
           </ul>

@@ -40,7 +40,7 @@ const mongo_session_store= mongodb_Store.create({
 
  //setting up flash middleware
  app.use(flash());
-
+app.use(express.json());
 
 //telling express about static folder fro mwhere it has to pick css/js files
 app.use(express.static('public'));
