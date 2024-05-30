@@ -42,6 +42,13 @@ const mongo_session_store= mongodb_Store.create({
  app.use(flash());
 app.use(express.json());
 
+//global middleware
+app.use((req,res,next)=>{
+    res.locals.session=req.session
+    next()
+
+})
+
 //telling express about static folder fro mwhere it has to pick css/js files
 app.use(express.static('public'));
 const ejs=require('ejs')

@@ -1,5 +1,7 @@
 
+import AWN from "awesome-notifications"
 const axios=require('axios');
+
 let addToCard = document.querySelectorAll(".add-to-cart");
 let cartCounter=document.getElementById('cartCounter');
 function updateCart(pizza)
@@ -7,6 +9,8 @@ function updateCart(pizza)
    axios.post('/update_cart',pizza).then(function(res){
     console.log(res)
     cartCounter.innerText=res.data.totalQty;
+    let notifier = new AWN();
+    notifier.success('Successfully added to Cart!');
   });
     
    

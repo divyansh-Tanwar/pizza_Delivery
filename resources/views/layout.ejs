@@ -11,6 +11,10 @@
     />
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- awesome notification -->
+    <link rel="stylesheet" href="/css/style.css"></link>  
+    <script src="/js/index.var.js"></script>
+    <!-- end of awesome notification link -->
     <link rel="stylesheet" href="/css/app.css" />
     <title>Pizza Delievery</title>
   </head>
@@ -31,7 +35,7 @@
             <a
               href="/cart"
               class="cart_image inline-block px-4 py-1 rounded-full flex items-center">
-              <span id="cartCounter" class="text-white font-bold pr-2 text-sm">0</span>
+              <span id="cartCounter" class="text-white font-bold pr-2 text-sm"><%= session.cart?session.cart.totalQty:''%></span>
               <img src="/img/cart.png"
             /></a>
           </li>
