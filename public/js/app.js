@@ -23,14 +23,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var awesome_notifications__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(awesome_notifications__WEBPACK_IMPORTED_MODULE_0__);
 
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/dist/browser/axios.cjs");
-var notifier = new (awesome_notifications__WEBPACK_IMPORTED_MODULE_0___default())();
 var addToCard = document.querySelectorAll(".add-to-cart");
 var cartCounter = document.getElementById('cartCounter');
 function updateCart(pizza) {
   axios.post('/update_cart', pizza).then(function (res) {
     console.log(res);
     cartCounter.innerText = res.data.totalQty;
+    var notifier = new (awesome_notifications__WEBPACK_IMPORTED_MODULE_0___default())();
     notifier.success('Successfully added to Cart!');
+  })["catch"](function (err) {
+    console.log(err);
+    var notifier = new (awesome_notifications__WEBPACK_IMPORTED_MODULE_0___default())();
+    notifier.warning("Please try again after sometime!");
   });
 }
 addToCard.forEach(function (btn) {

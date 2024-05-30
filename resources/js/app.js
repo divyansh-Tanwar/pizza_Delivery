@@ -11,6 +11,10 @@ function updateCart(pizza)
     cartCounter.innerText=res.data.totalQty;
     let notifier = new AWN();
     notifier.success('Successfully added to Cart!');
+  }).catch(function(err){
+      console.log(err);
+    let notifier = new AWN();
+    notifier.warning("Please try again after sometime!");
   });
     
    
