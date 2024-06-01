@@ -40,7 +40,11 @@ const mongo_session_store= mongodb_Store.create({
 
  //setting up flash middleware
  app.use(flash());
-app.use(express.json());
+ //we have to tell express which type of data can be received
+ app.use(express.urlencoded({extended:false})); //to access form data
+//  When extended is false, it uses the querystring library to parse the URL-encoded data.
+// When extended is true, it uses the qs library, which allows for parsing of rich objects and arrays.
+app.use(express.json()); //to access session data(type json)
 
 //global middleware
 app.use((req,res,next)=>{

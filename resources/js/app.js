@@ -9,10 +9,12 @@ function updateCart(pizza)
    axios.post('/update_cart',pizza).then(function(res){
     console.log(res)
     cartCounter.innerText=res.data.totalQty;
+    //code for notification(awesome notification package)
     let notifier = new AWN();
     notifier.success('Successfully added to Cart!');
   }).catch(function(err){
       console.log(err);
+      //code for notification(awesome notification package)
     let notifier = new AWN();
     notifier.warning("Please try again after sometime!");
   });
