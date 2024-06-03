@@ -8,6 +8,7 @@ const PORT=process.env.PORT||3000;
 const mongoose=require('mongoose');
 const session=require('express-session');
 const flash=require('express-flash')
+const passport=require('passport')
 //if we dont use this package we have to manually delete the the session after its lifespan is over but the connect-mongo package helps
 //to delete the sesssion automatically after the lifespan of session is over
 const mongodb_Store=require('connect-mongo');
@@ -29,6 +30,7 @@ const mongo_session_store= mongodb_Store.create({
 
 })
 
+
 //setting up session_middleware
  app.use(session({
     secret:process.env.Secret,
@@ -37,6 +39,12 @@ const mongo_session_store= mongodb_Store.create({
     saveUninitialized: true,
     cookie: { maxAge:1000*60*60*24 }  //lifespane of cookie(t=ms)
  }));
+
+ //passport config
+const passport_init=require("./app/config/passport")
+passport_init(passport);
+app.use(passport.initialize())
+app.use(passport.session())
 
  //setting up flash middleware
  app.use(flash());
