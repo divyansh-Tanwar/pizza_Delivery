@@ -29,8 +29,12 @@
         <ul class="hidden md:flex items-centre">
           <li class="mx-6"><a href="/">Menu</a></li>
           <li class="mx-6"><a href="">Offers</a></li>
+          <% if(user) { %>
+            <li class="mx-6"><a href="/logout">logout</a></li>
+            <% } else {%>
           <li class="mx-6"><a href="/register">Register</a></li>
           <li class="mx-6"><a href="/login">LogIn</a></li>
+          <% } %>
           <li class="mx-6 ">
             <a
               href="/cart"
@@ -58,12 +62,18 @@
           <ul class="mt-6">
             <li class="mx-6 text-xl font-bold pt-5"><a href="/">Menu</a></li>
             <li class="mx-6 text-xl font-bold pt-5"><a href="">Offers</a></li>
+            <% if(user) { %>
+              <li class="mx-6 text-xl font-bold pt-5">
+                <a href="/logout">logout</a>
+              </li>
+            <% } else {%>
             <li class="mx-6 text-xl font-bold pt-5">
               <a href="/register">Register</a>
             </li>
             <li class="mx-6 text-xl font-bold pt-5">
               <a href="/login">LogIn</a>
             </li>
+            <% } %>
             <li class="mx-6 text-xl font-bold pt-5">
               <hr class="my-3 bg-black border-2 border-solid" />
               <a

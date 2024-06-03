@@ -41,10 +41,11 @@ const mongo_session_store= mongodb_Store.create({
  }));
 
  //passport config
-const passport_init=require("./app/config/passport")
-passport_init(passport);
-app.use(passport.initialize())
-app.use(passport.session())
+ const passport_init=require("./app/config/passport")
+ passport_init(passport);
+ app.use(passport.initialize())
+ app.use(passport.session())
+
 
  //setting up flash middleware
  app.use(flash());
@@ -54,9 +55,10 @@ app.use(passport.session())
 // When extended is true, it uses the qs library, which allows for parsing of rich objects and arrays.
 app.use(express.json()); //to access session data(type json)
 
-//global middleware
+//global middleware (to access cookie data in ejs files)
 app.use((req,res,next)=>{
     res.locals.session=req.session
+    res.locals.user=req.user
     next()
 
 })
