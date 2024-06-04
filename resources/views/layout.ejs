@@ -30,7 +30,9 @@
           <li class="mx-6"><a href="/">Menu</a></li>
           <li class="mx-6"><a href="">Offers</a></li>
           <% if(user) { %>
-            <li class="mx-6"><a href="/logout">logout</a></li>
+            <form action="/logout" method="post">
+              <li class="mx-6"><button type="submit">logout</button></li>
+            </form>
             <% } else {%>
           <li class="mx-6"><a href="/register">Register</a></li>
           <li class="mx-6"><a href="/login">LogIn</a></li>
@@ -63,9 +65,12 @@
             <li class="mx-6 text-xl font-bold pt-5"><a href="/">Menu</a></li>
             <li class="mx-6 text-xl font-bold pt-5"><a href="">Offers</a></li>
             <% if(user) { %>
-              <li class="mx-6 text-xl font-bold pt-5">
-                <a href="/logout">logout</a>
-              </li>
+
+              <form action="/logout" method="post">
+                <li class="mx-6 text-xl font-bold pt-5">
+                  <button type="submit">logout</button>
+                </li>
+              </form>
             <% } else {%>
             <li class="mx-6 text-xl font-bold pt-5">
               <a href="/register">Register</a>

@@ -84,6 +84,18 @@ function authController() {
           req.flash("Username", Username);
           return res.redirect("/register");
         });
+    },
+
+    postlogout(req,res)
+    {
+        // req.logout();
+        // return res.redirect("/");
+        req.logout((err) => {
+          if (err) {
+              return next(err);
+          }
+          return res.redirect("/");
+      });
     }
   };
 }
