@@ -23,11 +23,19 @@ function orderContoller()
 
             order.save().then(result=>{
                 req.flash('success','Order Placed Successfully');
-                return  res.redirect("/");
+                delete req.session.cart  //once order is placed cart items will be deleted
+                return  res.redirect("/customer/orders");
             }).catch((err)=>{
                 req.flash('error','Something Went wrong')
                 return  res.redirect("/cart");
             })
+        },
+
+        async index(req,res)
+        {
+            const orders = await Order.find({ CustomerId: req.user._id }, null, { sort: { updatedAt: -1 } });
+            console.log(orders);
+            res.render("customers/orders.ejs",{orders:orders})
         }
     }
 }

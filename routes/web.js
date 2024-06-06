@@ -3,6 +3,8 @@ const authController=require("../app/http/controllers/authContoller");
 const cartController=require("../app/http/controllers/customers/cartController");
 const guest=require("../app/http/middleware/guest");
 const orderContoller=require("../app/http/controllers/orderController");
+const auth=require("../app/http/middleware/auth");
+const AdminorderContoller=require("../app/http/controllers/adim/AdminorderController")
 //homeController is a function which returns object 
 function initRoutes(app)
 {
@@ -19,7 +21,14 @@ function initRoutes(app)
 
     app.post("/update_cart",cartController().update)
 
-    app.post("/orders",orderContoller().store)
+    app.post("/orders",auth,orderContoller().store)
+
+    //customers routes:
+    app.get("/customer/orders",auth,orderContoller().index)
+
+    //admin routes
+    app.get("/admin/orders",auth,AdminorderContoller().index)
+
     
 }
 

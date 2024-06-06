@@ -1,5 +1,6 @@
 
 import AWN from "awesome-notifications"
+import initAdmin from "./admin";
 const axios=require('axios');
 
 let addToCard = document.querySelectorAll(".add-to-cart");
@@ -33,3 +34,15 @@ addToCard.forEach(function(btn){
     // console.log(pizza);
   });
 });
+
+const alertMsg=document.getElementById("success-alert");
+
+if(alertMsg)
+  {
+    setTimeout(()=>{
+      alertMsg.remove()
+    },2000)
+  }
+
+  console.log("app.js")
+  initAdmin()
