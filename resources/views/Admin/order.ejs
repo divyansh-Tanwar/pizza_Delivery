@@ -1,13 +1,13 @@
-<section class="orders light-section">
+<!-- <section class="orders light-section">
     <div class="container mx-auto mt-12">
         <h1 class="font-bold text-lg mb-4">All Orders!</h1>
         <% if(messages.success) { %>
         <div id="success-alert" class="flex item-center bg-green-500 text-white text-sm font-bold px-4 py-4" role="alert">
          <p><%=messages.success %></p>
         </div>
-        <% } %>
-    
-    <div class="relative overflow-x-auto">
+        <% } %> -->
+
+<!-- <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -31,11 +31,40 @@
                     </th>
                 </tr>
             </thead>
-            <tbody id="orderTableBody">
-               
-            </tbody>
-        </table>
+            <tbody id="orderTableBody"> -->
+<section class="orders light-section">
+  <div class="container mx-auto mt-12">
+    <h1 class="font-bold text-lg mb-4">All Orders!</h1>
+    <% if(messages.success) { %>
+    <div
+      id="success-alert"
+      class="flex item-center bg-green-500 text-white text-sm font-bold px-4 py-4"
+      role="alert"
+    >
+      <p><%=messages.success %></p>
     </div>
-    
+    <% } %>
+
+    <div class="relative overflow-x-auto">
+      <table
+        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+      >
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="px-6 py-3">Orders</th>
+            <th scope="col" class="px-6 py-3">Name:</th>
+            <th scope="col" class="px-6 py-3">Address</th>
+            <th scope="col" class="px-6 py-3">Status:</th>
+            <th scope="col" class="px-6 py-3">Placed at:</th>
+            <th scope="col" class="px-6 py-3">payment status:</th>
+          </tr>
+        </thead>
+        <tbody id="orderTableBody">
+
+        </tbody>
+      </table>
     </div>
-    </section>
+  </div>
+</section>

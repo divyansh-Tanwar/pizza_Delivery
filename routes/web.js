@@ -5,6 +5,7 @@ const guest=require("../app/http/middleware/guest");
 const orderContoller=require("../app/http/controllers/orderController");
 const auth=require("../app/http/middleware/auth");
 const AdminorderContoller=require("../app/http/controllers/adim/AdminorderController")
+const admin_auth=require("../app/http/middleware/admin")
 //homeController is a function which returns object 
 function initRoutes(app)
 {
@@ -27,7 +28,7 @@ function initRoutes(app)
     app.get("/customer/orders",auth,orderContoller().index)
 
     //admin routes
-    app.get("/admin/orders",auth,AdminorderContoller().index)
+    app.get("/admin/orders",admin_auth,AdminorderContoller().index)
 
     
 }
