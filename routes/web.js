@@ -27,6 +27,7 @@ function initRoutes(app)
 
     //customers routes:
     app.get("/customer/orders",auth,orderContoller().index)
+    app.get("/customer/orders/:id",auth,orderContoller().show)
 
     //admin routes
     app.get("/admin/orders",admin_auth,AdminorderContoller().index)

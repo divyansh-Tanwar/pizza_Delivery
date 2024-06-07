@@ -37,6 +37,24 @@ function orderContoller()
             console.log(orders);
             res.header('Cache-Control','no-cache,private,no-store,must-revalidate,max-stale=0,post-check=0,pre-check=0')
             res.render("customers/orders.ejs",{orders:orders})
+        },
+
+         async show(req,res)
+        {
+             const order=await Order.findById(req.params.id);
+             
+             console.log(req.user._id);
+             console.log(order.customerId);
+
+             if( req.user._id.toString() === order.CustomerId.toString())
+             {
+                
+                res.render("customers/singleOrder.ejs",{order:order});
+             }
+             else
+             {
+                res.redirect("/");
+             }
         }
     }
 }
