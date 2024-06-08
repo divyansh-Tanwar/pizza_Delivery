@@ -12,6 +12,10 @@ const flash=require('express-flash')
 const passport=require('passport')
 const Emitter=require('events')
 
+//setting up emmiter
+const eventEmitter=new Emitter();
+app.set('eventEmitter',eventEmitter);
+
 //if we dont use this package we have to manually delete the the session after its lifespan is over but the connect-mongo package helps
 //to delete the sesssion automatically after the lifespan of session is over
 const mongodb_Store=require('connect-mongo');
@@ -33,9 +37,7 @@ const mongo_session_store= mongodb_Store.create({
 
 })
 
-//setting up emmiter
-const eventEmitter=new Emitter();
-app.set('eventEmitter',eventEmitter);
+
 
 //setting up session_middleware
  app.use(session({
@@ -101,3 +103,9 @@ io.on('connection', (socket) => {
         socket.join(order_id)
     })
   });
+
+
+  eventEmitter.on('orderUpdated',(data)=>{
+      
+    io.to(`order_${data.id}`).emit('orderUpdated',data);
+  })

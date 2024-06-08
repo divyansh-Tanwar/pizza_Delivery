@@ -60,8 +60,14 @@ if(alertMsg)
   // console.log("yaha hu");
   console.log(order);
   console.log(statuses);
+
    function updateStatus(order)
-   {
+   {    
+    statuses.forEach((status)=>{
+       status.classList.remove('step-completed')
+       status.classList.remove('current')
+    }) 
+       
         let stepCompleted=true;
         
         statuses.forEach((status)=>{
@@ -100,6 +106,25 @@ if(alertMsg)
       socket.emit('join',`order_${order._id}`)
   
     }
+
+    socket.on('orderUpdated',(data)=>{
+      console.log("socket ke ander hu");
+      console.log(data);
+      const updatedOrder={...order}
+      // updatedOrder.updatedAt=
+      updatedOrder.status=data.status
+      updateStatus(updatedOrder);
+      
+      //notification
+          let notifier = new AWN();
+        notifier.success(data.status);
+      }).catch(function(err){
+          console.log(err);
+          //code for notification(awesome notification package)
+        let notifier = new AWN();
+        notifier.warning("Please try again after sometime!");
+      
+    })
    
 
 
