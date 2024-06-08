@@ -168,3 +168,13 @@ section.login {
 .status-box ul li.current span {
   color: #ec0606;
 }
+
+@media only screen and (max-width: 600px) {
+  .status-box ul li small {
+    visibility: hidden;
+  }
+}
+.status-box ul li small {
+  float: right;
+  font-size: 14px;
+}

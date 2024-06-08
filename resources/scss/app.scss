@@ -1,5 +1,6 @@
 @import "./variables";
 
+
 body{
     font-family: 'Lato',sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -195,3 +196,17 @@ section.login{
 .status-box ul li.current span{
     color: $primary;
 }
+
+@media only screen and (max-width: 600px) {
+    
+    .status-box ul li small{
+        visibility: hidden;
+  }
+}
+.status-box ul li small{
+    float: right;
+    font-size: 14px;
+    // margin-top: 8px;
+}
+
+

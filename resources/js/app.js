@@ -2,6 +2,7 @@
 import AWN from "awesome-notifications"
 import initAdmin from "./admin";
 const axios=require('axios');
+import moment from 'moment';
 
 let addToCard = document.querySelectorAll(".add-to-cart");
 let cartCounter=document.getElementById('cartCounter');
@@ -45,4 +46,60 @@ if(alertMsg)
   }
 
   console.log("app.js")
+
+
   initAdmin()
+
+
+  //function to get status of order and change it
+  let statuses=document.querySelectorAll('.staus_line');
+  let hidden_Input=document.querySelector("#hidden_Input")
+  let order=hidden_Input?hidden_Input.value:"kuch nhi mila";
+  let time=document.createElement('small');
+  order=JSON.parse(order);
+  // console.log("yaha hu");
+  console.log(order);
+  console.log(statuses);
+   function updateStatus(order)
+   {
+        let stepCompleted=true;
+        
+        statuses.forEach((status)=>{
+           
+           let dataprop=status.dataset.status;
+           if(stepCompleted)
+            {
+              status.classList.add('step-completed');
+            }
+
+            if(dataprop===order.status)
+            {  
+              time.innerText=moment(order.updatedAt).format('hh:mm A');
+              status.appendChild(time);
+              stepCompleted=false;
+                if( status.nextElementSibling)
+                {
+                    status.nextElementSibling.classList.add('current');
+                }
+               
+            }
+        })
+
+   }
+
+   updateStatus(order);
+
+
+   //socket
+
+   let socket=io()
+  
+   //step1:send message that we have landed into single order page pls make a private room for this order id with room name=order.id
+   if(order)
+    {
+      socket.emit('join',`order_${order._id}`)
+  
+    }
+   
+
+

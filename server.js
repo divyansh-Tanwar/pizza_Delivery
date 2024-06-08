@@ -1,6 +1,7 @@
 require('dotenv').config();
 // console.log(process.env)
 const express= require("express");
+var moment = require('moment');
 const app= express();
 const path=require('path');
 const expressLayout=require("express-ejs-layouts");
@@ -9,6 +10,8 @@ const mongoose=require('mongoose');
 const session=require('express-session');
 const flash=require('express-flash')
 const passport=require('passport')
+const Emitter=require('events')
+
 //if we dont use this package we have to manually delete the the session after its lifespan is over but the connect-mongo package helps
 //to delete the sesssion automatically after the lifespan of session is over
 const mongodb_Store=require('connect-mongo');
@@ -30,6 +33,9 @@ const mongo_session_store= mongodb_Store.create({
 
 })
 
+//setting up emmiter
+const eventEmitter=new Emitter();
+app.set('eventEmitter',eventEmitter);
 
 //setting up session_middleware
  app.use(session({
@@ -65,7 +71,8 @@ app.use((req,res,next)=>{
 
 //telling express about static folder fro mwhere it has to pick css/js files
 app.use(express.static('public'));
-const ejs=require('ejs')
+const ejs=require('ejs');
+const { Server } = require('http');
 app.set('views',path.join(__dirname,'/resources/views'));
 app.set('view engine','ejs');
 app.use(expressLayout);
@@ -76,6 +83,21 @@ app.use(expressLayout);
 
 
 //port on which website will be hosted
-app.listen(PORT,function(){
+const server=app.listen(PORT,function(){
     console.log(`listening on port ${PORT}`)
 })
+
+
+//sockets
+const io=require("socket.io")(server)
+
+io.on('connection', (socket) => {
+    
+    // console.log("inside socket")
+    // console.log(socket.id);
+    socket.on('join',(order_id)=>{
+         
+        console.log(order_id)
+        socket.join(order_id)
+    })
+  });
