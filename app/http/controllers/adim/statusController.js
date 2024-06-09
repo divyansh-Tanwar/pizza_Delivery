@@ -4,16 +4,6 @@ function statusController(){
    
     return {
         
-        // update(req,res)
-        // {
-        //     Order.updateOne({_id:req.order._id},{status:req.body.status}).then((res)=>{
-                
-        //         return res.redirect("/admin/orders");
-        //     }).catch((err)=>{
-        //         console.log(err);
-        //         return res.redirect("/admin/orders");
-        //     })
-        // }
 
         async update(req, res) {
 
@@ -25,7 +15,7 @@ function statusController(){
                 //getting emitter
                 const eventEmitter=req.app.get('eventEmitter');
                 eventEmitter.emit('orderUpdated',{id:req.body.orderId,status:req.body.status})
-                
+
                 return res.redirect("/admin/orders");
             } catch (err) {
                 console.log(err);

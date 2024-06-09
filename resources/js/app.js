@@ -1,6 +1,6 @@
 
 import AWN from "awesome-notifications"
-import initAdmin from "./admin";
+import initAdmin from "./admin.js";
 const axios=require('axios');
 import moment from 'moment';
 
@@ -45,10 +45,16 @@ if(alertMsg)
     },2000)
   }
 
-  console.log("app.js")
-
-
-  initAdmin()
+  // console.log("app.js")
+  let skt=io()
+  initAdmin(skt);
+  let adminAreaPath=window.location.pathname
+  // console.log(adminAreaPath);
+  if(adminAreaPath.includes('admin'))
+    { 
+      skt.emit('join','adminRoom');
+    }
+ 
 
 
   //function to get status of order and change it
@@ -58,8 +64,8 @@ if(alertMsg)
   let time=document.createElement('small');
   order=JSON.parse(order);
   // console.log("yaha hu");
-  console.log(order);
-  console.log(statuses);
+  // console.log(order);
+  // console.log(statuses);
 
    function updateStatus(order)
    {    
@@ -99,17 +105,27 @@ if(alertMsg)
    //socket
 
    let socket=io()
-  
+   console.log("socket ke neecha hu");
+    //  initAdmin(socket);
+     console.log("init ke neecha hu");
    //step1:send message that we have landed into single order page pls make a private room for this order id with room name=order.id
    if(order)
     {
       socket.emit('join',`order_${order._id}`)
-  
     }
 
+    console.log("line 108  app.js");
+    
+    // let adminAreaPath=window.location.pathname
+    // // console.log(adminAreaPath);
+    // if(adminAreaPath.includes('admin'))
+    //   { 
+    //     socket.emit('join','adminRoom');
+    //   }
+
     socket.on('orderUpdated',(data)=>{
-      console.log("socket ke ander hu");
-      console.log(data);
+      // console.log("socket ke ander hu");
+      // console.log(data);
       const updatedOrder={...order}
       // updatedOrder.updatedAt=
       updatedOrder.status=data.status

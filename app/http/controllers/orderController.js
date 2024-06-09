@@ -21,10 +21,34 @@ function orderContoller()
                 address:Address
             });
 
-            order.save().then(result=>{
-                req.flash('success','Order Placed Successfully');
-                delete req.session.cart  //once order is placed cart items will be deleted
-                return  res.redirect("/customer/orders");
+            order.save().then(async (result)=>{
+               
+                // Order.populate(result,{ path :'CustomerId'},(err,placedOrder)=>{
+
+                //     req.flash('success','Order Placed Successfully');
+
+                //         //emit emitter to pass it in a socket
+                //     //  console.log('result:')
+                //     //  console.log(result);
+                //         const eventEmitter=req.app.get('eventEmitter');
+                //     eventEmitter.emit('orderPlaced',placedOrder)
+
+                //     delete req.session.cart  //once order is placed cart items will be deleted
+                //     return  res.redirect("/customer/orders");
+                const placedOrder = await Order.populate(result, { path: 'CustomerId' });
+
+                req.flash('success', 'Order Placed Successfully');
+        
+                // Emit an event to notify that an order has been placed
+                const eventEmitter = req.app.get('eventEmitter');
+                eventEmitter.emit('orderPlaced', placedOrder);
+        
+                // Clear the cart from the session
+                delete req.session.cart;
+        
+                // Redirect the customer to the orders page
+                return res.redirect('/customer/orders');
+                 
             }).catch((err)=>{
                 req.flash('error','Something Went wrong')
                 return  res.redirect("/cart");
@@ -43,8 +67,8 @@ function orderContoller()
         {
              const order=await Order.findById(req.params.id);
              
-             console.log(req.user._id);
-             console.log(order.customerId);
+            //  console.log(req.user._id);
+            //  console.log(order.customerId);
 
              if( req.user._id.toString() === order.CustomerId.toString())
              {

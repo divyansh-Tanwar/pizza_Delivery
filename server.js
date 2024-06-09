@@ -109,3 +109,8 @@ io.on('connection', (socket) => {
       
     io.to(`order_${data.id}`).emit('orderUpdated',data);
   })
+
+  eventEmitter.on('orderPlaced',(data)=>{
+      
+    io.to('adminRoom').emit('orderPlaced',data);
+  })
