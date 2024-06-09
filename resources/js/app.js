@@ -2,6 +2,7 @@
 import AWN from "awesome-notifications"
 import initAdmin from "./admin.js";
 const axios=require('axios');
+import initStripe from "./stripe.js"
 import moment from 'moment';
 
 let addToCard = document.querySelectorAll(".add-to-cart");
@@ -24,6 +25,7 @@ function updateCart(pizza)
    
 }
 
+
 addToCard.forEach(function(btn){
   btn.addEventListener("click", function (event) {
     // console.log(event);
@@ -44,8 +46,47 @@ if(alertMsg)
       alertMsg.remove()
     },2000)
   }
+  
+//   const paymentType=document.getElementById('paymentType')
 
-  // console.log("app.js")
+
+initStripe();
+//   // getting form data from cart ,ejs,doing ajax call to server(ajax call)
+//  const paymentForm=document.getElementById('payment-form')
+//  if(paymentForm)
+//   {
+//     paymentForm.addEventListener('submit',(event)=>{
+//       event.preventDefault();
+   
+//       let formData = new FormData(paymentForm);
+//       let formObject={}
+   
+//       for(let [key, value] of formData.entries())
+//        { 
+//          formObject[key]=value
+         
+//        }
+       
+//        axios.post("/orders",formObject).then((res)=>{
+//         let notifier = new AWN();
+//         notifier.success(res.data.message);
+        
+//         setTimeout(()=>{
+          
+//           window.location.href='/customer/orders';
+//         },500)
+        
+//        }).catch((err)=>{
+//         //  console.log(err);
+//           let notifier = new AWN();
+//          notifier.warning(err.res.data.message);
+//        })
+//        // console.log(formObject);
+//     })
+//   }
+
+
+  // socket for admin
   let skt=io()
   initAdmin(skt);
   let adminAreaPath=window.location.pathname
@@ -101,27 +142,16 @@ if(alertMsg)
 
    updateStatus(order);
 
-
    //socket
 
    let socket=io()
-   console.log("socket ke neecha hu");
-    //  initAdmin(socket);
-     console.log("init ke neecha hu");
-   //step1:send message that we have landed into single order page pls make a private room for this order id with room name=order.id
+      //step1:send message that we have landed into single order page pls make a private room for this order id with room name=order.id
    if(order)
     {
       socket.emit('join',`order_${order._id}`)
     }
 
     console.log("line 108  app.js");
-    
-    // let adminAreaPath=window.location.pathname
-    // // console.log(adminAreaPath);
-    // if(adminAreaPath.includes('admin'))
-    //   { 
-    //     socket.emit('join','adminRoom');
-    //   }
 
     socket.on('orderUpdated',(data)=>{
       // console.log("socket ke ander hu");

@@ -9,6 +9,7 @@
   "author": "Divyansh Tanwar",
   "license": "ISC",
   "dependencies": {
+    "@stripe/stripe-js": "^3.5.0",
     "awesome-notifications": "^3.1.3",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",

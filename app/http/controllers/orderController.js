@@ -22,22 +22,9 @@ function orderContoller()
             });
 
             order.save().then(async (result)=>{
-               
-                // Order.populate(result,{ path :'CustomerId'},(err,placedOrder)=>{
-
-                //     req.flash('success','Order Placed Successfully');
-
-                //         //emit emitter to pass it in a socket
-                //     //  console.log('result:')
-                //     //  console.log(result);
-                //         const eventEmitter=req.app.get('eventEmitter');
-                //     eventEmitter.emit('orderPlaced',placedOrder)
-
-                //     delete req.session.cart  //once order is placed cart items will be deleted
-                //     return  res.redirect("/customer/orders");
                 const placedOrder = await Order.populate(result, { path: 'CustomerId' });
 
-                req.flash('success', 'Order Placed Successfully');
+                // req.flash('success', 'Order Placed Successfully');
         
                 // Emit an event to notify that an order has been placed
                 const eventEmitter = req.app.get('eventEmitter');
@@ -47,11 +34,12 @@ function orderContoller()
                 delete req.session.cart;
         
                 // Redirect the customer to the orders page
-                return res.redirect('/customer/orders');
+                return res.json({message: 'Order Placed Successfully'});
                  
             }).catch((err)=>{
-                req.flash('error','Something Went wrong')
-                return  res.redirect("/cart");
+                // req.flash('error','Something Went wrong')
+                return res.json({message: 'Something went wrong'});
+                // return  res.redirect("/cart");
             })
         },
 
