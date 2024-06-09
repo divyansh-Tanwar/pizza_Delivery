@@ -1,6 +1,7 @@
 import AWN from "awesome-notifications"
 const axios=require('axios');
 import {loadStripe} from '@stripe/stripe-js';
+import { placeOrder } from "./apiService";
 async function initStripe()
 {   
     // --------------------------------stripe setup-------------------------------------------------------------------------------------
@@ -31,7 +32,10 @@ async function initStripe()
    
 
     const paymentType=document.getElementById('paymentType')
-    
+    if(!paymentType)
+    {
+        return;
+    }
     paymentType.addEventListener('change',(event)=>{
         
         console.log(event.target.value);
@@ -45,8 +49,9 @@ async function initStripe()
         }
     })
 
-
-    // getting form data from cart ,ejs,doing ajax call to server(ajax call)
+  //------------------------------------------------stripe setup end----------------------------------------------------------------------
+    
+  // getting form data from cart ,ejs,doing ajax call to server(ajax call)
    const paymentForm=document.getElementById('payment-form')
    if(paymentForm)
     {
@@ -62,21 +67,24 @@ async function initStripe()
            
          }
          
-         axios.post("/orders",formObject).then((res)=>{
-          let notifier = new AWN();
-          notifier.success(res.data.message);
-          
-          setTimeout(()=>{
-            
-            window.location.href='/customer/orders';
-          },500)
-          
-         }).catch((err)=>{
-          //  console.log(err);
-            let notifier = new AWN();
-           notifier.warning(err.res.data.message);
-         })
-         // console.log(formObject);
+        
+         if(!card)
+          {
+            placeOrder(formObject);
+            return;
+          }
+    //-----------------------sending request to stripe to generate token then sending the data to server--------------------------------------
+           // step1:sending request to strip server to generate token(card verification)
+          stripe.createToken(card).then((res)=>{
+            // console.log(res.token.id);
+             formObject.stripeToken=res.token.id
+            //  console.log(formObject.stripeToken);
+            placeOrder(formObject);
+          }).catch((err)=>{
+              
+            console.log(err);
+          })
+  
       })
     }
     

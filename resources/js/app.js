@@ -47,44 +47,8 @@ if(alertMsg)
     },2000)
   }
   
-//   const paymentType=document.getElementById('paymentType')
-
 
 initStripe();
-//   // getting form data from cart ,ejs,doing ajax call to server(ajax call)
-//  const paymentForm=document.getElementById('payment-form')
-//  if(paymentForm)
-//   {
-//     paymentForm.addEventListener('submit',(event)=>{
-//       event.preventDefault();
-   
-//       let formData = new FormData(paymentForm);
-//       let formObject={}
-   
-//       for(let [key, value] of formData.entries())
-//        { 
-//          formObject[key]=value
-         
-//        }
-       
-//        axios.post("/orders",formObject).then((res)=>{
-//         let notifier = new AWN();
-//         notifier.success(res.data.message);
-        
-//         setTimeout(()=>{
-          
-//           window.location.href='/customer/orders';
-//         },500)
-        
-//        }).catch((err)=>{
-//         //  console.log(err);
-//           let notifier = new AWN();
-//          notifier.warning(err.res.data.message);
-//        })
-//        // console.log(formObject);
-//     })
-//   }
-
 
   // socket for admin
   let skt=io()

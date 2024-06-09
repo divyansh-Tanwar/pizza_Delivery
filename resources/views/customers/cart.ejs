@@ -28,7 +28,7 @@
             <% if(user) { %>
             <div class="px-4 sm:px-6 lg:px-8">
                 <form action="/orders" method="post" class="mt-6 "  id="payment-form">
-                    <select id="paymentType" class=" max-w-sm  mb-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="paymentType" name="paymentType" class=" max-w-sm  mb-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Payment Method</option>
                         <option value="COD">Cash on Delivery(COD)</option>
                         <option value="card">Card Payment</option>
